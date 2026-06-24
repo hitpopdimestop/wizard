@@ -1,10 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Multi-Step Discovery Wizard Flow
 
-## Getting Started
+A highly optimized, accessible multi-step wizard form built with **Next.js**, **React**, and **Tailwind CSS**.
 
-First, run the development server:
+## Features
 
-```bash
+* **BFF Endpoint Fetching:** * Separately fetches dynamic questions workflow layouts.
+    * Dynamically fetches configurations for the price/value range slider sliders.
+    * Handles immediate data mutations directly on the backend helper service layer.
+* **Zero Dependencies (No Form/UI Libraries):** Built entirely with native React and Tailwind primitives, keeping the bundle size minimal without heavy third-party UI or validation engines.
+* **State Machine:** Uses `useSyncExternalStore` for predictable state tracking with persistent session storage.
+* **Recursive Sanitization:** Automatically drops stale downstream answers when branching dependencies change.
+* **Full Accessibility (WAI-ARIA):**
+    * Implements `aria-live="polite"` for dynamic step updates.
+    * Uses a custom `useHeadingFocus` hook (`requestAnimationFrame`) to handle focus transitions on step switches.
+    * Native keyboard interaction for all inputs (Radio groups via arrow keys, checkboxes via Spacebar).
+
+## Directory Structure
+
+```
+├── components/
+│   ├── CheckboxInput.tsx       # Accessible multi-select fields
+│   ├── RadioInput.tsx          # Accessible mutual exclusion choices
+│   ├── RangeSliderInput.tsx     # Accessible custom double range slider bounds
+│   ├── TextInput.tsx           # Accessible textarea fields
+│   ├── WizardError.tsx         # Accessible error alerts
+│   ├── WizardLoader.tsx        # Accessible loading indicators
+│   ├── WizardResults.tsx       # Final payload JSON display
+│   └── WizardStep.tsx          # Main step structure coordinator
+├── hooks/
+│   ├── useFetchQuestions.ts    # Questions data and range config fetch engine
+│   ├── useHeadingFocus.ts      # Core focus tracking transition hook
+│   └── useWizardFlow.ts        # Core state machine engine
+├── mocks/
+│   └── handlers.ts             # Mock API configuration boundaries for layout responses
+├── types/
+│   └── index.ts                # Unified TypeScript type definitions
+└── pages/
+    └── index.tsx               # Orchestration index entry view
+```
+## Getting started
+```
 npm run dev
 # or
 yarn dev
@@ -13,28 +48,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
