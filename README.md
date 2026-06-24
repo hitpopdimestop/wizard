@@ -31,10 +31,8 @@ A highly optimized, accessible multi-step wizard form built with **Next.js**, **
 │   ├── useFetchQuestions.ts    # Questions data and range config fetch engine
 │   ├── useHeadingFocus.ts      # Core focus tracking transition hook
 │   └── useWizardFlow.ts        # Core state machine engine
-├── mocks/
-│   └── handlers.ts             # Mock API configuration boundaries for layout responses
-├── types/
-│   └── index.ts                # Unified TypeScript type definitions
+├── mocks.ts                    # Mock API configuration boundaries for layout responses
+├── types.ts                    # Unified TypeScript type definitions
 └── pages/
     └── index.tsx               # Orchestration index entry view
 ```
